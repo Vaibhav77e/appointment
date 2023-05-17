@@ -28,10 +28,10 @@ class CustomListView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Text(
-                    'big data',
+                    'big data 2',
                     style: TextStyle(fontSize: 20),
                   ),
-                  Text('Time'),
+                  Text('Time 3'),
                 ],
               ),
               IconButton(onPressed: () {}, icon: const Icon(Icons.info_sharp))
