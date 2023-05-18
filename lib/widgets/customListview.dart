@@ -1,3 +1,4 @@
+import 'package:appointment/widgets/serviceOffered.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
@@ -22,6 +23,12 @@ class _CustomListViewState extends State<CustomListView> {
     });
   }
 
+  void checkedVal(bool? value, int index) {
+    setState(() {
+      requiredData[index][2] = !requiredData[index][2];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -29,73 +36,13 @@ class _CustomListViewState extends State<CustomListView> {
       itemCount: requiredData.length,
       itemBuilder: (context, index) => Padding(
         padding: const EdgeInsets.only(top: 8.0, bottom: 5),
-        child: Container(
-          margin: const EdgeInsets.symmetric(horizontal: 5),
-          height: 65,
-          width: double.infinity,
-          decoration: BoxDecoration(
-              color: const Color.fromARGB(255, 253, 251, 251),
-              borderRadius: BorderRadius.circular(15),
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.grey.shade500,
-                    blurRadius: 4,
-                    offset: const Offset(4, 5)),
-              ]),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  // Radio(value: '', groupValue: null, onChanged: null,activeColor: ,),
-                  Checkbox(
-                      shape: CircleBorder(),
-                      value: selectVal,
-                      onChanged: (value) {
-                        setState(() {
-                          selectVal = value!;
-                          print(requiredData[index][2] = value);
-                          print(requiredData[index][0]);
-                        });
-                      }),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Text(
-                        requiredData[index][0].toString(),
-                        style: const TextStyle(fontSize: 17),
-                      ),
-                      Text(
-                        requiredData[index][1].toString(),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              IconButton(onPressed: () {}, icon: const Icon(Icons.info_sharp)),
-            ],
-          ),
+        child: ServiceOffer(
+          value: requiredData[index][2],
+          onChanged: (value) => checkedVal(value, index),
+          textData: requiredData[index][0],
+          textData_2: requiredData[index][1],
         ),
       ),
     );
   }
 }
-
-
-
-
-
-
-
-        // Checkbox(
-        //               shape: CircleBorder(),
-        //               value: selectVal,
-        //               onChanged: (value) {
-        //                 setState(() {
-        //                   selectVal = value!;
-        //                   print(requiredData[index][2] = value);
-        //                   print(requiredData[index][0]);
-        //                 });
-        //               }),
