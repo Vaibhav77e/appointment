@@ -18,7 +18,7 @@ class _CalendarState extends State<Calendar> {
       appBar: AppBar(
         title: const Text("Select date for an appointement"),
       ),
-      body: Center(
+      body: SingleChildScrollView(
         child: Column(
           children: [
             TableCalendar(
@@ -45,7 +45,7 @@ class _CalendarState extends State<Calendar> {
                         borderRadius: BorderRadius.circular(12.0)),
                     child: Text(
                       selectedDay.day.toString(),
-                      style: TextStyle(color: Colors.white),
+                      style: const TextStyle(color: Colors.white),
                     )),
                 todayBuilder: (context, date, events) => Container(
                     margin: const EdgeInsets.all(5.0),
@@ -65,11 +65,10 @@ class _CalendarState extends State<Calendar> {
             ),
             Container(
               height: MediaQuery.of(context).size.height * 0.30,
-              //color: Colors.amber,
               margin: const EdgeInsets.symmetric(horizontal: 15),
               child: CustomGrid(),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             GestureDetector(
